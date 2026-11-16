@@ -48,7 +48,7 @@ jobs:
       # shards use the same weights, even if main finishes during this run.
       - name: Restore trusted backend timing history
         if: steps.scope.outputs.backend == 'true'
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: ci-timings/history.json
           key: backend-unit-timings-${{ runner.os }}-v1-${{ github.sha }}
@@ -1163,7 +1163,7 @@ jobs:
 
       - name: Save trusted backend timing history
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: ci-timings/history.json
           key: backend-unit-timings-${{ runner.os }}-v1-${{ github.sha }}
